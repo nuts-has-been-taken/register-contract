@@ -5,7 +5,7 @@ class VoterInfo(BaseModel):
     age: int
     id: str
 
-class Candidate(BaseModel):
+class Election(BaseModel):
     name: str
     contract_id: str
     description: str

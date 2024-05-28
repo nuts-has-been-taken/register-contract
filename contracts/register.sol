@@ -18,21 +18,27 @@ contract VoterRegistry {
     constructor() {
         owner = msg.sender;
     }
-    
+
+    modifier onlyAdmin() {
+        require(msg.sender == owner, "Only admin can call this function.");
+        _;
+    }
+
     // 檢查是不是合法的投票者
     function isEligible(address voter) public view returns (bool) {
         return eligibleVoters[voter];
     }
 
     // 註冊投票者
-    function registerVoter(address voter) external {
+    function registerVoter(address voter) public onlyAdmin {
         eligibleVoters[voter] = true;
 
         console.log(
             "Register voter",
-            msg.sender,
+            voter
         );
 
         emit VoterRegistered(voter);
+        return voter
     }
 }

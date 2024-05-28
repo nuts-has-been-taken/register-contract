@@ -1,10 +1,10 @@
 from fastapi.middleware.cors import CORSMiddleware
+from block_chain import registry_voter
 from model import Election, VoterInfo
 from bson.json_util import dumps
 from pymongo import MongoClient
 from dotenv import load_dotenv
 from fastapi import FastAPI
-from web3 import Web3
 import json
 import os
 
@@ -32,10 +32,16 @@ def read_root():
 def register_voter(voter: VoterInfo):
     # 用來當作檢查條件
     if voter.age <= 18:
-
-        return False
+        print(f'Voter {voter.address} is not eligible.')
+        pass
     else:
-        return True
+        try:
+            voter_address = registry_voter(voter.address)
+            print(f'Voter {voter_address} register success.')
+            return True
+        except Exception as e:
+            print(f"Error: {e}")
+    return False
 
 @app.get("/election")
 def get_election():

@@ -1,8 +1,11 @@
 from fastapi.middleware.cors import CORSMiddleware
 from model import Election, VoterInfo
+from bson.json_util import dumps
 from pymongo import MongoClient
 from dotenv import load_dotenv
 from fastapi import FastAPI
+from web3 import Web3
+import json
 import os
 
 load_dotenv()
@@ -29,6 +32,7 @@ def read_root():
 def register_voter(voter: VoterInfo):
     # 用來當作檢查條件
     if voter.age <= 18:
+
         return False
     else:
         return True
@@ -36,14 +40,14 @@ def register_voter(voter: VoterInfo):
 @app.get("/election")
 def get_election():
     elections = ELECTION.find()
-    return list(elections)
+    return json.loads(dumps(list(elections)))
 
 @app.post("/election/")
 def add_election(election: Election):
     ELECTION.insert_one(election.model_dump())
     return {'msg':'add success'}
 
-@app.delete("/election/{election_name}")
-def del_election(election_name: str):
-    ELECTION.delete_one({"name":election_name})
+@app.delete("/election/{contract_id}")
+def del_election(contract_id: str):
+    ELECTION.delete_one({"contract_id":contract_id})
     return {'msg':'del success'}

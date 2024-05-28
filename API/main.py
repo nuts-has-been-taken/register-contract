@@ -36,8 +36,8 @@ def register_voter(voter: VoterInfo):
         pass
     else:
         try:
-            voter_address = registry_voter(voter.address)
-            print(f'Voter {voter_address} register success.')
+            registry_voter(voter.address)
+            print(f'Voter {voter.address} register success.')
             return True
         except Exception as e:
             print(f"Error: {e}")

@@ -108,5 +108,4 @@ voter_registry_abi = [
 def registry_voter(register_address):
     
     voter_registry_contract = WEB3.eth.contract(address=REGISTRY_CONTRACT_ADDRESS, abi=voter_registry_abi)
-
-    return voter_registry_contract.functions.registerVoter(register_address).transact({'from': ADMIN_ADDRESS})
+    voter_registry_contract.functions.registerVoter(register_address).transact({'from': ADMIN_ADDRESS})

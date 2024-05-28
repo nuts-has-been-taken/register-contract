@@ -39,6 +39,5 @@ contract VoterRegistry {
         );
 
         emit VoterRegistered(voter);
-        return voter
     }
 }

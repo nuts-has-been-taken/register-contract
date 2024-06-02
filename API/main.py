@@ -1,14 +1,15 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 from fastapi.middleware.cors import CORSMiddleware
 from block_chain import registry_voter
 from model import Election, VoterInfo
 from bson.json_util import dumps
 from pymongo import MongoClient
-from dotenv import load_dotenv
+
 from fastapi import FastAPI
 import json
 import os
-
-load_dotenv()
 
 CLIENT = MongoClient(os.getenv("MONGO_CLIENT"))
 DB = CLIENT["BlockChain"]

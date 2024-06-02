@@ -1,0 +1,6 @@
+pymongo
+pydantic
+fastapi
+web3
+python-dotenv
+bson

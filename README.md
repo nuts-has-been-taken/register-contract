@@ -32,6 +32,8 @@ npm install
 npx hardhat node
 ```
 
+# Run
+
 move the following files :
 
 `register-contract/contracts/deploy.js` to `hardhat-boilerplate/scripts` replace the file

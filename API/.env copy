@@ -1,0 +1,4 @@
+MONGO_CLIENT=mongodb://xxx/
+WEB3_URL=http://localhost:8545/
+REGISTRY_CONTRACT_ADDRESS=
+ADMIN_ADDRESS=

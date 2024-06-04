@@ -1,0 +1,23 @@
+{
+  "name": "vue-dapp",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "ethers": "^6.12.1",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0",
+    "vuetify": "^3.6.4",
+    "vuetify-datetime-picker": "^2.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite": "^5.2.8"
+  }
+}
